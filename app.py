@@ -1,4 +1,3 @@
-from turtle import title, width
 import pandas as pd
 import matplotlib.pyplot as plt
 from plotly.subplots import make_subplots
@@ -8,10 +7,7 @@ import plotly.graph_objects as go
 
 
 st.set_page_config(layout="wide")
-
-df = pd.read_excel('/home/juto/Desktop/projects/adidas analysis/data/Adidas.xlsx')
-
-
+df = pd.read_excel('data/Adidas.xlsx')
 
 # Graph1 
 retailers = df['Retailer'].unique()
@@ -118,24 +114,17 @@ fig4.update_traces(textinfo="label+value")
 fig4.update_layout(margin=dict(t=50, l=50, r=50, b=50))  # Adjust margins for better readability
 
 
-# st.title("Adidas Interactive Sales Dashboard")
+st.title("Adidas Interactive Sales Dashboard")
 
-
-
-col1, col2, col3, col4= st.columns([1,2,3,4])
-
-
-
+col1, col2= st.columns(2)
 with st.container():
     
     with col1:
-        st.image('/home/juto/Desktop/projects/adidas analysis/logo.jpeg', width=150)
-    
-    with col2:
-        st.title("Adidas Interactive Sales Dashboard")
-    
+        st.image('images/logo.jpeg', width=150)
+        
+
+col3, col4 = st.columns(2)
 with col3:
-    # st.plotly_chart(fig1, use_)
     st.plotly_chart(fig1, use_container_width=True)   
     st.expander("Retailer wise Sales")
     st.dataframe(total_sales)
@@ -144,9 +133,6 @@ with col3:
 with col4:
     st.plotly_chart(fig2, use_container_width=True)    
     
-
 st.plotly_chart(fig3, use_container_width=True)  
 
 st.plotly_chart(fig4, use_container_width=True)
-
-
